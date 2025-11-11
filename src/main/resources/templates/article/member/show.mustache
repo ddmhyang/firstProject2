@@ -1,0 +1,27 @@
+{{>layouts/header}}
+<h1> 회원 상세 정보 </h1>
+
+{{#showMemberItem}}
+    <div class="mb-3">
+        <label class="form-label">아이디(PK)</label>
+        <input readonly value="{{id}}" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">회원ID</label>
+        <input readonly value="{{memberid}}" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">이름</label>
+        <input readonly value="{{name}}" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">이메일</label>
+        <input readonly value="{{email}}" type="text" class="form-control">
+    </div>
+{{/showMemberItem}}
+
+<a href="/members/{{showMemberItem.id}}/edit" class="btn btn-primary">수정하기</a>
+<a href="/members/{{showMemberItem.id}}/delete" class="btn btn-danger">삭제하기</a>
+<a href="/members" class="btn btn-secondary">목록으로</a>
+
+{{>layouts/footer}}

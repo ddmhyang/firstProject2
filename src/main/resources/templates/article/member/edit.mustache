@@ -1,0 +1,32 @@
+{{>layouts/header}}
+<h1> 회원 정보 수정</h1>
+
+{{#showMemberItem}}
+    <form action="/members/update" method="post">
+        <input type="hidden" name="id" value="{{id}}">
+
+        <div class="mb-3">
+            <label class="form-label">아이디(PK)</label>
+            <input type="text" value="{{id}}" class="form-control" readonly>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">회원ID</label>
+            <input type="text" value="{{memberid}}" name="memberid" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">비밀번호</label>
+            <input type="password" name="password" class="form-control" placeholder="변경할 경우에만 입력하세요">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">이름</label>
+            <input type="text" value="{{name}}" name="name" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">이메일</label>
+            <input type="email" value="{{email}}" name="email" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-danger">수정 완료</button>
+        <a href="/members/{{id}}" class="btn btn-warning">수정 취소</a>
+    </form>
+{{/showMemberItem}}
+{{>layouts/footer}}

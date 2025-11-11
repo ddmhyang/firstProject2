@@ -1,0 +1,29 @@
+{{>layouts/header}}
+<h1> 회원 목록 </h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">아이디(PK)</th>
+        <th scope="col">회원ID</th>
+        <th scope="col">이름</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#memberList}}
+        <tr>
+            <td>{{id}}</td>
+            <td><a href="/members/{{id}}">{{memberid}}</a></td>
+            <td>{{name}}</td>
+        </tr>
+    {{/memberList}}
+    </tbody>
+</table>
+
+{{#msg}}
+    <script>
+        alert("{{msg}}");
+    </script>
+{{/msg}}
+
+{{>layouts/footer}}
