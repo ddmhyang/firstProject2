@@ -9,20 +9,20 @@ import lombok.Setter;
 public class MemberForm {
 
     private Long id;
-    private String memberid; // <-- 'username'에서 'memberid'로 변경
+    private String memberid;
     private String password;
-    private String name;     // <-- 'name' 필드 추가
-    private String email;    // <-- 'email' 필드 추가
+    private String name;
+    private String email;
 
     // DTO를 Entity로 변환하는 메소드 (수정)
     public Member toEntity() {
         Member member = new Member();
 
         member.setId(this.id);
-        member.setMemberid(this.memberid); // <-- 'memberid'로 설정
+        member.setMemberid(this.memberid);
         member.setPassword(this.password);
-        member.setName(this.name);         // <-- 'name' 설정 추가
-        member.setEmail(this.email);       // <-- 'email' 설정 추가
+        member.setName(this.name);
+        member.setEmail(this.email);
 
         return member;
     }
