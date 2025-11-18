@@ -21,12 +21,12 @@ public class MemberController {
 
     @GetMapping("/members/join")
     public String joinForm() {
-        return "member/join"; //
+        return "member/join";
     }
 
     @PostMapping("/members/create")
     public String createMember(MemberForm form) {
-        memberService.join(form);
+        memberService.create(form);
         return "redirect:/members";
     }
 
@@ -57,10 +57,11 @@ public class MemberController {
         model.addAttribute("showMemberItem", member);
         return "member/edit";
     }
+
     @PostMapping("/members/update")
     public String update(MemberForm form) {
-        Member updated = memberService.join(form);
-
+        // memberService.join -> memberService.update 로 변경
+        Member updated = memberService.update(form);
         return "redirect:/members/" + updated.getId();
     }
 }

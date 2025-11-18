@@ -13,8 +13,7 @@ public class MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
-
-    public Member join(MemberForm form) {
+    public Member create(MemberForm form) {
         Member member = form.toEntity();
         return memberRepository.save(member);
     }
@@ -22,11 +21,25 @@ public class MemberService {
     public List<Member> index() {
         return (List<Member>) memberRepository.findAll();
     }
+
     public Member show(Long id) {
         return memberRepository.findById(id).orElse(null);
     }
 
     public void delete(Long id) {
         memberRepository.deleteById(id);
+    }
+
+    public Member update(MemberForm form) {
+        Member target = memberRepository.findById(form.getId()).orElse(null);
+        if (target != null && target.getId().equals(form.getId())) {
+            target.setName(form.getName());
+            target.setEmail(form.getEmail());
+            if (form.getPassword() != null && !form.getPassword().isEmpty()) {
+                target.setPassword(form.getPassword());
+            }
+            return memberRepository.save(target);
+        }
+        return null;
     }
 }
